@@ -8,5 +8,16 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Country extends Model
 {
-    use HasFactory,SoftDeletes;
+    use HasFactory, SoftDeletes;
+
+    public function state()
+    {
+        return $this->hasMany(State::class);
+    }
+
+    public function employee()
+    {
+        return $this->hasMany(Employee::class);
+    }
+
 }
