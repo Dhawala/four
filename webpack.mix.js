@@ -12,5 +12,20 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
+    .js([
+        'resources/js/dashboard.js'
+    ], 'public/js/dashboard.js')
+    //sb admin
+    .copy('node_modules/startbootstrap-sb-admin-2/css/*',
+        'public/css/')
+    .copy('node_modules/startbootstrap-sb-admin-2/js/*',
+        'public/js/')
+    .copy('node_modules/startbootstrap-sb-admin-2/img/*',
+        'public/img/')
+    .copy('node_modules/startbootstrap-sb-admin-2/vendor/jquery-easing/*',
+        'public/js/')
     .sass('resources/sass/app.scss', 'public/css')
+    .styles([
+        'resources/css/dashboard.css',
+    ], 'public/css/dashboard.css')
     .sourceMaps();

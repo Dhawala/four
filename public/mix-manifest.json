@@ -1,4 +1,19 @@
 {
     "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css"
+    "/js/dashboard.js": "/js/dashboard.js",
+    "/css/app.css": "/css/app.css",
+    "/css/sb-admin-2.css": "/css/sb-admin-2.css",
+    "/css/sb-admin-2.min.css": "/css/sb-admin-2.min.css",
+    "/js/sb-admin-2.js": "/js/sb-admin-2.js",
+    "/js/sb-admin-2.min.js": "/js/sb-admin-2.min.js",
+    "/img/undraw_posting_photo.svg": "/img/undraw_posting_photo.svg",
+    "/img/undraw_profile_1.svg": "/img/undraw_profile_1.svg",
+    "/img/undraw_profile_2.svg": "/img/undraw_profile_2.svg",
+    "/img/undraw_profile_3.svg": "/img/undraw_profile_3.svg",
+    "/img/undraw_profile.svg": "/img/undraw_profile.svg",
+    "/img/undraw_rocket.svg": "/img/undraw_rocket.svg",
+    "/js/jquery.easing.compatibility.js": "/js/jquery.easing.compatibility.js",
+    "/js/jquery.easing.js": "/js/jquery.easing.js",
+    "/js/jquery.easing.min.js": "/js/jquery.easing.min.js",
+    "/css/dashboard.css": "/css/dashboard.css"
 }
