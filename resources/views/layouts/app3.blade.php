@@ -25,6 +25,8 @@
 
     <!-- Custom styles for this template-->
     <link href="{{asset('css/sb-admin-2.min.css')}}" rel="stylesheet">
+    <link href="{{asset('js/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
+
 
 </head>
 
@@ -190,6 +192,8 @@
 <script src="{{asset('js/jquery.easing.min.js')}}"></script>
 <!-- Custom scripts for all pages-->
 <script src="{{asset('js/sb-admin-2.min.js')}}"></script>
+<script src="{{asset('js/datatables/dataTables.bootstrap4.js')}}"></script>
+<script src="{{asset('js/datatables/jquery.dataTables.js')}}"></script>
 
 </body>
 

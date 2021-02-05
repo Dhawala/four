@@ -17,12 +17,29 @@
                     <h6 class="m-0 font-weight-bold text-primary">Users</h6>
                 </div>
                 <div class="card-body">
-                    <div class="text-center">
-                        <ul>
+                    <div class="">
+                        <table class="table table-bordered">
+                            <thead>
+                            <th>Username</th>
+                            <th>First Name</th>
+                            <th>last Name</th>
+                            <th>Email</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                            </thead>
+                            <tbody>
                             @foreach($users as $k=>$user)
-                                <li>{{$user->username}}</li>
+                                <tr>
+                                    <td>{{$user->username}}</td>
+                                    <td>{{$user->first_name}}</td>
+                                    <td>{{$user->last_name}}</td>
+                                    <td>{{$user->email}}</td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
                             @endforeach
-                        </ul>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

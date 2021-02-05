@@ -26,6 +26,8 @@ mix.js('resources/js/app.js', 'public/js')
         'public/js/')
     .copy('node_modules/startbootstrap-sb-admin-2/vendor/jquery/*',
         'public/js/')
+    .copy('node_modules/startbootstrap-sb-admin-2/vendor/datatables/*',
+        'public/js/datatables/')
     .copy('node_modules/startbootstrap-sb-admin-2/vendor/jquery-easing/*',
         'public/js/')
     .sass('resources/sass/app.scss', 'public/css')
