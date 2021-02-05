@@ -61,7 +61,7 @@
                 <span>Employee Management</span></a>
         </li>
 
-        <!-- Nav Item - Pages Collapse Menu -->
+        <!-- Nav Item - System Management -->
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                aria-expanded="true" aria-controls="collapseTwo">
@@ -74,6 +74,22 @@
                     <a class="collapse-item" href="/state">State</a>
                     <a class="collapse-item" href="/city">City</a>
                     <a class="collapse-item" href="/department">Department</a>
+                </div>
+            </div>
+        </li>
+
+        <!-- Nav Item - Pages User management -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+               aria-expanded="true" aria-controls="collapseTwo">
+                <i class="fas fa-fw fa-cog"></i>
+                <span>User management</span>
+            </a>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" href="/user">User</a>
+                    <a class="collapse-item" href="/role">Role</a>
+                    <a class="collapse-item" href="/permission">Permission</a>
                 </div>
             </div>
         </li>
