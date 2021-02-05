@@ -15,5 +15,11 @@
     "/js/jquery.easing.compatibility.js": "/js/jquery.easing.compatibility.js",
     "/js/jquery.easing.js": "/js/jquery.easing.js",
     "/js/jquery.easing.min.js": "/js/jquery.easing.min.js",
+    "/js/jquery.js": "/js/jquery.js",
+    "/js/jquery.min.js": "/js/jquery.min.js",
+    "/js/jquery.min.map": "/js/jquery.min.map",
+    "/js/jquery.slim.js": "/js/jquery.slim.js",
+    "/js/jquery.slim.min.js": "/js/jquery.slim.min.js",
+    "/js/jquery.slim.min.map": "/js/jquery.slim.min.map",
     "/css/dashboard.css": "/css/dashboard.css"
 }

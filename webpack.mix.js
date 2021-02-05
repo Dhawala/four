@@ -24,6 +24,10 @@ mix.js('resources/js/app.js', 'public/js')
         'public/img/')
     .copy('node_modules/startbootstrap-sb-admin-2/vendor/jquery-easing/*',
         'public/js/')
+    .copy('node_modules/startbootstrap-sb-admin-2/vendor/jquery/*',
+        'public/js/')
+    .copy('node_modules/startbootstrap-sb-admin-2/vendor/jquery-easing/*',
+        'public/js/')
     .sass('resources/sass/app.scss', 'public/css')
     .styles([
         'resources/css/dashboard.css',
