@@ -5,7 +5,8 @@
     <div class="row">
         <div class="col-lg-12 mb-4">
             <div class="card">
-                <div class="card-header d-flex justify-content-end">
+                <div class="card-header d-flex justify-content-between">
+                    <h2 class="d-inline-flex">Countries</h2>
                     <form class="form-inline">
                     <a class="btn btn-primary btn-sm" href="{{url('country/create')}}"><i class="fa fa-plus"></i> Create New</a>
                     </form>

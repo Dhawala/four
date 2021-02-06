@@ -5,9 +5,10 @@
     <div class="row">
         <div class="col-lg-12 mb-4">
             <div class="card">
-                <div class="card-header d-flex justify-content-end">
+                <div class="card-header d-flex justify-content-between">
+                    <h2 class="d-inline-flex">Cities</h2>
                     <form class="form-inline">
-                    <a class="btn btn-primary btn-sm" href="{{url('country/create')}}"><i class="fa fa-plus"></i> Create New</a>
+                    <a class="btn btn-primary btn-sm" href="{{url('city/create')}}"><i class="fa fa-plus"></i> Create New</a>
                     </form>
                 </div>
                 <div class="card-body">
@@ -15,13 +16,13 @@
                         <table class="table table-condensed" id="dataTable">
                             <thead>
                             <th>id</th>
-                            <th>country_code</th>
+                            <th>State</th>
                             <th>Name</th>
                             <th></th>
                             </thead>
                             <tfoot>
                             <th>id</th>
-                            <th>country_code</th>
+                            <th>State</th>
                             <th>Name</th>
                             <th></th>
                             </tfoot>
@@ -44,12 +45,12 @@
             processing: true,
             serverSide: true,
             ajax: {
-                url: '{{url('/country_search')}}',
+                url: '{{url('/city_search')}}',
                 data: function (d) {}
             },
             columns: [
                 {data: 'id', name: 'id'},
-                {data: 'country_code', name: 'country_code'},
+                {data: 'state', name: 'state'},
                 {data: 'name', name: 'name'},
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ]

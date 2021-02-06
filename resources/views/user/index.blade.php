@@ -10,6 +10,7 @@
 
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
+                    <h2 class="d-inline-flex">Users</h2>
                     <form method="POST" id="search-form" class="form-inline" role="form">
 
                         <div class="form-group mx-2 float-right">

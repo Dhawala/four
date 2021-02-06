@@ -5,20 +5,21 @@
         <div class="col-md-6">
             <div class="card shadow mb-4">
                 <div class="card-body">
-                    <form action="{{url('/country/'.$item->id)}}" method="POST" enctype="multipart/form-data">
+                    <form action="{{url('/city/'.$item->id)}}" method="POST" enctype="multipart/form-data">
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <h3> Edit country Info </h3>
+                                    <h3> Edit city Info </h3>
                                     <hr>
                                     @csrf
                                     @method('put')
                                     <div class="col-md-12">
-                                        <label>Country Code</label>
-                                        <input type="text" class="form-control" name="country_code" id="country_code"
-                                               value="{{$item->country_code}}"
-                                               maxlength="20"
-                                               required>
+                                        <label>State</label>
+                                        <select class="form-control" name="state_id" id="state_id" required>
+                                            @foreach($states as $state)
+                                                <option value="{{$state->id}}" {{$state->id==$item->state_id?'selected':''}}>{{$state->name}}</option>
+                                            @endforeach
+                                        </select>
                                         @error('country_code')
                                         <span class="text-danger text-sm">{{$message}}</span>
                                         @enderror

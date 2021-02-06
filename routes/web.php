@@ -32,5 +32,11 @@ Route::middleware(['auth'])->group(function (){
     Route::resource('/department',"\App\Http\Controllers\DepartmentController");
     Route::get('/department_search', '\App\Http\Controllers\DepartmentController@search');
 
+    Route::resource('/city',"\App\Http\Controllers\CityController");
+    Route::get('/city_search', '\App\Http\Controllers\CityController@search');
+
+    Route::resource('/state',"\App\Http\Controllers\StateController");
+    Route::get('/state_search', '\App\Http\Controllers\StateController@search');
+
 
 });
