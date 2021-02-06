@@ -9,7 +9,7 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <h3> Edit User Info </h3>
+                                    <h3> Create User</h3>
                                     <hr>
                                     @csrf
                                     <div class="col-md-12">

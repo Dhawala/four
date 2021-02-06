@@ -21,7 +21,16 @@ Auth::routes();
 Route::middleware(['auth'])->group(function (){
 
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
     Route::resource('/user',"\App\Http\Controllers\UserAccountsController");
     Route::get('/user_search', '\App\Http\Controllers\UserAccountsController@search');
     Route::put('/pwchange/{id}','\App\Http\Controllers\UserAccountsController@pwchange');
+
+    Route::resource('/country',"\App\Http\Controllers\CountryController");
+    Route::get('/country_search', '\App\Http\Controllers\CountryController@search');
+
+    Route::resource('/department',"\App\Http\Controllers\DepartmentController");
+    Route::get('/department_search', '\App\Http\Controllers\DepartmentController@search');
+
+
 });

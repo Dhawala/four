@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-end">
                     <form class="form-inline">
-                    <a class="btn btn-primary btn-sm" href="{{url('country/create')}}"><i class="fa fa-plus"></i> Create New</a>
+                    <a class="btn btn-primary btn-sm" href="{{url('department/create')}}"><i class="fa fa-plus"></i> Create New</a>
                     </form>
                 </div>
                 <div class="card-body">
@@ -15,13 +15,11 @@
                         <table class="table table-condensed" id="dataTable">
                             <thead>
                             <th>id</th>
-                            <th>country_code</th>
                             <th>Name</th>
                             <th></th>
                             </thead>
                             <tfoot>
                             <th>id</th>
-                            <th>country_code</th>
                             <th>Name</th>
                             <th></th>
                             </tfoot>
@@ -44,12 +42,11 @@
             processing: true,
             serverSide: true,
             ajax: {
-                url: '{{url('/country_search')}}',
+                url: '{{url('/department_search')}}',
                 data: function (d) {}
             },
             columns: [
                 {data: 'id', name: 'id'},
-                {data: 'country_code', name: 'country_code'},
                 {data: 'name', name: 'name'},
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ]

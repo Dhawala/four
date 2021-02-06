@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Yajra\DataTables\DataTables;
 
@@ -17,8 +19,7 @@ class UserAccountsController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        return view('user.index', compact('users'));
+        return view('user.index');
     }
 
     /**
@@ -112,12 +113,20 @@ class UserAccountsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = DB::table('users')->where('id', $id);
+        if (Auth::user()->id != $user->first()->id) {
+            $user->update(['deleted_at' => Carbon::now()]);
+            return redirect('/user');
+        }
+
+        return back()->with('status', 'cannot delete current user');
     }
 
     public function search(Request $request)
     {
-        $users = DB::table('users')->select(['id', 'username', 'first_name', 'last_name', 'email']);
+        $users = DB::table('users')
+            ->select(['id', 'username', 'first_name', 'last_name', 'email'])
+            ->whereNull('deleted_at');
         return Datatables::of($users)
             ->filter(function ($query) use ($request) {
 
@@ -131,14 +140,15 @@ class UserAccountsController extends Controller
             ->addColumn('action', function ($row) {
 
                 $btn = '<span class="px-2 d-inline-flex"><form method="get" action="' . url('/user/' . $row->id . '/edit') . '" ><input type="submit" class="edit btn btn-primary btn-sm" value="Edit"></form></span>';
-                $btn .= '<a href="javascript:void(0)" class="edit btn btn-danger btn-sm">Delete</a>';
+                $btn .= '<a data-toggle="modal" data-target="#deleteModel" onclick="$(\'#delete-form\').attr(\'action\',\'' . url('user/' . $row->id) . '\'); console.log(\'' . url('user/' . $row->id) . '\');$(\'#delete\').modal().show();" class="edit btn btn-danger btn-sm">Delete</a>';
 
                 return $btn;
             })
             ->make(true);
     }
 
-    public function pwchange(Request $request,User $user){
+    public function pwchange(Request $request, User $user)
+    {
 
         $this->validate($request, [
             'password' => 'required|confirmed',

@@ -4,6 +4,10 @@
     <!-- Content Row -->
     <div class="row">
         <div class="col-lg-12 mb-4">
+            @if(session('status'))
+                <span class="text-danger">{{session('status')}}</span>
+            @endif
+
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
                     <form method="POST" id="search-form" class="form-inline" role="form">
@@ -20,7 +24,8 @@
                         <button type="submit" class="btn btn-primary btn-sm ">Search</button>
                     </form>
                     <form class="form-inline">
-                    <a class="btn btn-primary btn-sm" href="{{url('user/create')}}"><i class="fa fa-plus"></i> Create New</a>
+                        <a class="btn btn-primary btn-sm" href="{{url('user/create')}}"><i class="fa fa-plus"></i>
+                            Create New</a>
                     </form>
                 </div>
                 <div class="card-body">
