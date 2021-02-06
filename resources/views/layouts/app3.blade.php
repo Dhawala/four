@@ -192,9 +192,10 @@
 <script src="{{asset('js/jquery.easing.min.js')}}"></script>
 <!-- Custom scripts for all pages-->
 <script src="{{asset('js/sb-admin-2.min.js')}}"></script>
-<script src="{{asset('js/datatables/dataTables.bootstrap4.js')}}"></script>
-<script src="{{asset('js/datatables/jquery.dataTables.js')}}"></script>
+<script src="{{asset('js/datatables/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('js/datatables/dataTables.bootstrap4.min.js')}}"></script>
 
+@yield('scripts')
 </body>
 
 </html>

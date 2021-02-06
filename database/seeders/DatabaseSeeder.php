@@ -7,6 +7,7 @@ use App\Models\Country;
 use App\Models\Department;
 use App\Models\Employee;
 use App\Models\State;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -18,7 +19,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-         \App\Models\User::factory(1)->state(['email'=>'1234dhawala@gmail.com'])->create();
+        User::factory(1)->state(['email'=>'1234dhawala@gmail.com'])->create();
+        User::factory(5)->create();
         $this->call([DepartmentSeeder::class]);
 
         Country::factory(5)
