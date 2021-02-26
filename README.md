@@ -4,7 +4,7 @@
 
 
 ## About FOUR
-There is nothing about it. just another laravel project with all the custom plugins. hoping to interest a potential employer.  
+There is nothing about it. just another laravel project with all the custom plugins. 
 
 
 ## If You are Trying to clone this.
