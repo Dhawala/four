@@ -44,7 +44,7 @@ export default {
         },
         address(emp){
             try {
-                return emp.address+' '+emp.city.name+' '+emp.zip+' '+emp.state.name+' '+emp.country.name;
+                return emp.address;
             }catch (e){
                 console.log(e);
             }

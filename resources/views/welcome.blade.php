@@ -50,7 +50,10 @@
         <div>
             <h3 class="float-md-start mb-0">Four</h3>
             <nav class="nav nav-masthead justify-content-center float-md-end">
-                <a class="nav-link active" aria-current="page" href="/login">Login</a>
+                @auth
+                <a class="nav-link active" aria-current="page" href="/home">Home</a>
+                @endauth
+                    <a class="nav-link active" aria-current="page" href="/login">Login</a>
                 <a class="nav-link" href="/register">Register</a>
             </nav>
         </div>
