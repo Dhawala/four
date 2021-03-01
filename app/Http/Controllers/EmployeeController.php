@@ -86,6 +86,6 @@ class EmployeeController extends Controller
     public function all_employees()
     {
         return response()->json(Employee::with('department', 'city', 'state', 'country')
-            ->paginate($perPage = 20));
+            ->paginate($perPage = 10));
     }
 }

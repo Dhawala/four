@@ -10,7 +10,7 @@
             </tr>
             </thead>
             <tbody>
-                <tr v-for="employee in employees" :key="employee.id">
+                <tr v-for="employee in employees.data" :key="employee.id">
                     <td>{{name(employee)}}</td>
                     <td>{{employee.department.name}}</td>
                     <td>{{address(employee)}}</td>
@@ -20,6 +20,13 @@
             <tfoot>
             </tfoot>
         </table>
+        <div class="col-1">
+        <pagination :data="employees"
+                    @pagination-change-page="getEmployees"
+                    :size="'small'"
+                    :limit="5">
+        </pagination>
+        </div>
     </div>
 </template>
 
@@ -28,13 +35,14 @@ export default {
     name: "EmployeeList",
     data() {
         return {
-            employees: [],
+            employees: {},
+
         }
     },
     methods: {
-        getEmployees() {
-            axios.get('/api/employees').then(response => {
-                this.employees = response.data.data;
+        getEmployees(page=1) {
+            axios.get('/api/employees?page='+page).then(response => {
+                this.employees = response.data;
             }).catch(e=>{
                 console.log(e);
             });
