@@ -30,7 +30,7 @@ class EmployeeController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -41,7 +41,7 @@ class EmployeeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Employee  $employee
+     * @param \App\Models\Employee $employee
      * @return \Illuminate\Http\Response
      */
     public function show(Employee $employee)
@@ -52,7 +52,7 @@ class EmployeeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Employee  $employee
+     * @param \App\Models\Employee $employee
      * @return \Illuminate\Http\Response
      */
     public function edit(Employee $employee)
@@ -63,8 +63,8 @@ class EmployeeController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Employee  $employee
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Employee $employee
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Employee $employee)
@@ -75,11 +75,17 @@ class EmployeeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Employee  $employee
+     * @param \App\Models\Employee $employee
      * @return \Illuminate\Http\Response
      */
     public function destroy(Employee $employee)
     {
         //
+    }
+
+    public function all_employees()
+    {
+        return response()->json(Employee::with('department', 'city', 'state', 'country')
+            ->paginate($perPage = 20));
     }
 }

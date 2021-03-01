@@ -17,9 +17,7 @@
                         >
                     </div>
                 </form>
-                <employee-list>
-
-                </employee-list>
+                <employee-list></employee-list>
             </div>
         </div>
     </div>
@@ -31,19 +29,7 @@ export default {
     name: "EmployeeComponent",
     components: {EmployeeList},
     data() {
-        return {
-            message: '',
-            x: 0,
-            y: 0,
-            employees: [],
-        }
-    },
-    methods: {
-        cdn(event) {
-            this.x = event.offsetX;
-            this.y = event.offsetY;
-            this.message = 'X:'+this.x+'Y:'+this.y;
-        }
+        return {}
     }
 }
 </script>

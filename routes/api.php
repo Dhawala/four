@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use \App\Http\Controllers\EmployeeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,4 +17,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::get('/employees',[EmployeeController::class, "all_employees"]);
+Route::prefix('/employee')->group(function (){
+    Route::post('/store',[EmployeeController::class,'store']);
 });
