@@ -36,8 +36,32 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+           'first_name'=>'required|max:6',
+           'last_name'=>'required|max:60',
+           'middle_name'=>'required|max:60',
+           'address'=>'required|max:120',
+           'department_id'=>'required|numeric',
+           'city_id'=>'required|numeric',
+           'state_id'=>'required|numeric',
+           'country_id'=>'required|numeric',
+           'zip'=>'required|numeric',
+           'birthdate'=>'required|date',
+           'date_hired'=>'required|date',
+        ]);
         $employee = new Employee();
-        $employee->first
+        $employee->first_name = $request->first_name;
+        $employee->last_name = $request->last_name;
+        $employee->middle_name = $request->middle_name;
+        $employee->address = $request->address;
+        $employee->department_id = $request->department_id;
+        $employee->city_id = $request->city_id;
+        $employee->state_id = $request->state_id;
+        $employee->country_id = $request->country_id;
+        $employee->zip = $request->zip;
+        $employee->birthdate = $request->birthdate;
+        $employee->date_hired = $request->date_hired;
+        $employee->save();
     }
 
     /**

@@ -39,7 +39,6 @@ Route::middleware(['auth'])->group(function (){
     Route::get('/state_search', '\App\Http\Controllers\StateController@search');
 
     Route::resource('/employee',"\App\Http\Controllers\EmployeeController");
-    Route::get('/employee_search', '\App\Http\Controllers\EmployeeController@search');
 
 
 });
