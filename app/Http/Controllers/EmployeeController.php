@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Employee;
 use Illuminate\Http\Request;
+use \DB;
 
 class EmployeeController extends Controller
 {
@@ -35,7 +36,8 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $employee = new Employee();
+        $employee->first
     }
 
     /**
@@ -83,9 +85,20 @@ class EmployeeController extends Controller
         //
     }
 
-    public function all_employees()
+    public function all_employees(Request $request)
     {
-        return response()->json(Employee::with('department', 'city', 'state', 'country')
-            ->paginate($perPage = 10));
+        $employee = Employee::query()
+            ->with('department', 'city', 'state', 'country')
+            ->orderBy('id');
+        if (isset($request->name)) {
+            $employee->where(DB::raw("CONCAT(first_name,' ',last_name)"), 'like', "%$request->name%");
+        }
+        if (isset($request->department)) {
+            $employee->whereHas('department', function ($q) use ($request) {
+                return $q->where('name', 'like', "%$request->department%");
+            });
+        }
+
+        return $employee->paginate(10);
     }
 }

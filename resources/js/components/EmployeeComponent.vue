@@ -3,20 +3,11 @@
         <div class="card">
             <div class="card-header d-flex justify-content-between">
                 <h2 class="d-inline-flex">Employees</h2>
-                <form class="form-inline">
+                <form class="form-inline" @submit.prevent>
                     <a class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Create New</a>
                 </form>
             </div>
             <div class="card-body">
-                <form class="form">
-                    <div class="col-md-12">
-                        <input type="text"
-                               class="form-control"
-                               name="name" id="name"
-                               placeholder="search"
-                        >
-                    </div>
-                </form>
                 <employee-list></employee-list>
             </div>
         </div>
@@ -25,11 +16,17 @@
 
 <script>
 import EmployeeList from "./EmployeeList";
+import {bus} from "../employees";
+
 export default {
     name: "EmployeeComponent",
     components: {EmployeeList},
     data() {
-        return {}
+        return {
+            query:'',
+        }
+    },
+    methods:{
     }
 }
 </script>

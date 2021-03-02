@@ -1,6 +1,34 @@
 <template>
     <div>
-        <table class="table table-borderless table-sm" @click="getEmployees">
+        <form class="form" @submit.prevent>
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-6">
+                        <label for="query">Name
+                            <input type="text"
+                                   class="form-control"
+                                   name="query" id="query"
+                                   v-model="query"
+                                   placeholder="search"
+                                   @change.lazy="getEmployees(1)"
+                            >
+                        </label>
+                    </div>
+                    <div class="col-6">
+                        <label for="dep">Department
+                            <input type="text"
+                                   class="form-control"
+                                   name="dep" id="dep"
+                                   v-model="department"
+                                   placeholder="department"
+                                   @change.lazy="getEmployees(1)"
+                            >
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <table class="table table-borderless table-sm">
             <thead>
             <tr>
                 <th>Employee name</th>
@@ -10,58 +38,63 @@
             </tr>
             </thead>
             <tbody>
-                <tr v-for="employee in employees.data" :key="employee.id">
-                    <td>{{name(employee)}}</td>
-                    <td>{{employee.department.name}}</td>
-                    <td>{{address(employee)}}</td>
-                    <td>{{employee.date_hired}}</td>
-                </tr>
+            <tr v-for="employee in employees.data" :key="employee.id">
+                <td>{{ name(employee) }}</td>
+                <td>{{ employee.department.name }}</td>
+                <td>{{ address(employee) }}</td>
+                <td>{{ employee.date_hired }}</td>
+            </tr>
             </tbody>
             <tfoot>
             </tfoot>
         </table>
         <div class="col-1">
-        <pagination :data="employees"
-                    @pagination-change-page="getEmployees"
-                    :size="'small'"
-                    :limit="5">
-        </pagination>
+            <pagination :data="employees"
+                        @pagination-change-page="getEmployees"
+                        :size="'small'"
+                        :limit="5">
+            </pagination>
         </div>
     </div>
 </template>
 
 <script>
+import {bus} from "../employees";
+
 export default {
     name: "EmployeeList",
     data() {
         return {
             employees: {},
+            query: '',
+            department: '',
 
         }
     },
     methods: {
-        getEmployees(page=1) {
-            axios.get('/api/employees?page='+page).then(response => {
+        getEmployees(page = 1) {
+            axios.get('/api/employees?page=' + page
+                + (this.query != '' ? '&name=' + this.query : '')
+                + (this.department != '' ? '&department=' + this.department : '')
+            ).then(response => {
                 this.employees = response.data;
-            }).catch(e=>{
+                //console.log(this.query);
+            }).catch(e => {
                 console.log(e);
             });
         },
-        name(emp){
-            return emp.first_name+' '+emp.last_name
+        name(emp) {
+            return emp.first_name + ' ' + emp.last_name
         },
-        address(emp){
+        address(emp) {
             try {
                 return emp.address;
-            }catch (e){
+            } catch (e) {
                 console.log(e);
             }
         }
-
     },
-    computed:{
-
-    },
+    computed: {},
 
     created() {
         this.getEmployees();
