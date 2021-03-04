@@ -38,6 +38,28 @@
                         </textarea>
                     </div>
                 </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="zip">Birthday: </label>
+                        <datepicker
+                            :bootstrap-styling="true"
+                            v-model="employee.birthdate"
+                            :format="customDate"
+                        >
+                        </datepicker>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="zip">Date Hired: </label>
+                        <datepicker
+                            :bootstrap-styling="true"
+                            v-model="employee.date_hired"
+                            :format="customDate"
+                        >
+                        </datepicker>
+                    </div>
+                </div>
 
                 <div class="col-6">
                     <div class="form-group">
@@ -97,8 +119,13 @@
                                v-model="employee.zip">
                     </div>
                 </div>
-
-
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="form-group  float-right">
+                        <input type="submit" class="form-control btn btn-primary" value="submit">
+                    </div>
+                </div>
             </div>
         </form>
     </div>
@@ -106,11 +133,15 @@
 
 <script>
 import {ModelSelect} from 'vue-search-select';
+import Datepicker from 'vuejs-datepicker';
+import moment from 'moment'
 
 export default {
     name: "EmployeeCreate",
     components: {
-        ModelSelect
+        ModelSelect,
+        Datepicker,
+        moment
     },
     data() {
         return {
@@ -194,6 +225,9 @@ export default {
         },
         isCountry() {
             return this.selected_country.id != undefined
+        },
+        customDate(date){
+            return  moment(date).format("MM-DD-YYYY");
         }
     },
     watch: {

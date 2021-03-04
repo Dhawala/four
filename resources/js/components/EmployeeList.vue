@@ -1,33 +1,40 @@
 <template>
     <div>
-        <form class="form" @submit.prevent>
-            <div class="col-md-12">
+        <div class="row mb-2">
+            <div class="col-6">
+                <router-link to="/employee/create" class="btn btn-primary btn-sm" tag="button">
+                    <i class="fa fa-plus"></i> Create New
+                </router-link>
+            </div>
+        </div>
+        <div class="row">
+            <form class="form" @submit.prevent>
                 <div class="row">
-                    <div class="col-6">
-                        <label for="query">Name
-                            <input type="text"
-                                   class="form-control"
-                                   name="query" id="query"
-                                   v-model="query"
-                                   placeholder="search"
-                                   @change.lazy="getEmployees(1)"
-                            >
-                        </label>
-                    </div>
-                    <div class="col-6">
-                        <label for="dep">Department
-                            <input type="text"
-                                   class="form-control"
-                                   name="dep" id="dep"
-                                   v-model="department"
-                                   placeholder="department"
-                                   @change.lazy="getEmployees(1)"
-                            >
-                        </label>
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-6">
+                                <input type="text"
+                                       class="form-control"
+                                       name="query" id="query"
+                                       v-model="query"
+                                       placeholder="search by name"
+                                       @change="getEmployees(1)"
+                                >
+                            </div>
+                            <div class="col-6">
+                                <input type="text"
+                                       class="form-control"
+                                       name="dep" id="dep"
+                                       v-model="department"
+                                       placeholder="Search Department"
+                                       @change="getEmployees(1)"
+                                >
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
         <table class="table table-borderless table-sm">
             <thead>
             <tr>

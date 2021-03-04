@@ -5,8 +5,6 @@
                 <h2 class="d-inline-flex">Employees</h2>
                 <form class="form-inline" @submit.prevent>
 <!--                    <a class="btn btn-primary btn-sm"></a>-->
-                    <router-link to="/employee/create" class="btn btn-primary btn-sm" tag="button">
-                        <i class="fa fa-plus"></i> Create New</router-link>
                 </form>
             </div>
             <div class="card-body">
