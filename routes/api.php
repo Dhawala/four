@@ -23,3 +23,7 @@ Route::get('/employees',[EmployeeController::class, "all_employees"]);
 Route::prefix('/employee')->group(function (){
     Route::post('/store',[EmployeeController::class,'store']);
 });
+
+Route::get('/departments',[\App\Http\Controllers\DepartmentController::class,'all_departments']);
+Route::get('/countries',[\App\Http\Controllers\CountryController::class,'all_countries']);
+Route::get('/states',[\App\Http\Controllers\StateController::class,'all_states']);

@@ -118,5 +118,7 @@ class DepartmentController extends Controller
             })
             ->make(true);
     }
-
+    public function all_departments(){
+        return response()->json(Department::all());
+    }
 }

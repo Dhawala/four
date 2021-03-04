@@ -1,3 +1,9 @@
+import routes from "./routes";
+import VueRouter from 'vue-router'
+import vSelect from 'vue-select'
+//import 'vue-select/dist/vue-select.css';
+import 'vue-search-select/dist/VueSearchSelect.css'
+
 window.Vue = require('vue').default;
 window.axios = require('axios');
 /**
@@ -11,7 +17,12 @@ window.axios = require('axios');
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-// Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.use(VueRouter);
+const router = new VueRouter({
+    routes: routes,
+    mode: 'history',
+});
+//Vue.component('v-select', vSelect)
 Vue.component('pagination', require('laravel-vue-pagination'));
 Vue.component('employee-component', require('./components/EmployeeComponent.vue').default);
 /**
@@ -23,4 +34,5 @@ export const bus = new Vue();
 
 const app = new Vue({
     el: '#app',
+    router: router
 });

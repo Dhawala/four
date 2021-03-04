@@ -126,4 +126,7 @@ class CountryController extends Controller
             ->make(true);
     }
 
+    public function all_countries(){
+        return response()->json(Country::select(['id','name'])->get());
+    }
 }
