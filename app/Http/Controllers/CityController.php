@@ -132,4 +132,12 @@ class CityController extends Controller
             ->make(true);
     }
 
+    public function all_cities(Request $request){
+        $cities = City::query()->select(['id','name']);
+        if($request->state){
+            $cities->where('state_id',$request->state);
+        }
+        return response()->json($cities->get());
+    }
+
 }

@@ -54,7 +54,7 @@
 
                 <div class="col-6">
                     <div class="form-group">
-                        <label >Country: </label>
+                        <label>Country: </label>
                         <model-select :options="countries"
                                       option-value="id"
                                       option-text="name"
@@ -66,7 +66,7 @@
 
                 <div class="col-6">
                     <div class="form-group">
-                        <label >State: </label>
+                        <label>State: </label>
                         <model-select :options="states"
                                       option-value="id"
                                       option-text="name"
@@ -78,13 +78,23 @@
 
                 <div class="col-6">
                     <div class="form-group">
-                        <label >City: </label>
+                        <label>City: </label>
                         <model-select :options="cities"
                                       option-value="id"
                                       option-text="name"
                                       v-model="selected_city"
                                       placeholder="select city">
                         </model-select>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="zip">ZIP: </label>
+                        <input type="text"
+                               class="form-control"
+                               id="zip"
+                               v-model="employee.zip">
                     </div>
                 </div>
 
@@ -165,6 +175,17 @@ export default {
             }).catch(e => {
                 console.log(e)
             })
+        },
+        getCities(state = null) {
+            axios.get('../api/cities' + (state != '' ? '?state=' + state : '')).then(response => {
+                const items = [];
+                response.data.forEach(function (item, index) {
+                    items.push({value: item.id, text: item.name})
+                });
+                this.cities = items;
+            }).catch(e => {
+                console.log(e)
+            })
         }
     },
     computed: {
@@ -183,6 +204,13 @@ export default {
             this.employee.country_id = current.value;
             if (current.value != previous.value) {
                 this.getStates(this.selected_country.value);
+                this.getCities(this.selected_country.value);
+            }
+        },
+        selected_state(current, previous) {
+            this.employee.state_id = current.value;
+            if (current.value != previous.value) {
+                this.getCities(this.selected_state.value);
             }
         },
     },
@@ -190,6 +218,7 @@ export default {
         this.getDepartments();
         this.getCountries();
         this.getStates(this.selected_country.value);
+        this.getCities(this.selected_state.value);
     }
 }
 </script>
