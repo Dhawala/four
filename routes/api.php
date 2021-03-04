@@ -22,6 +22,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/employees',[EmployeeController::class, "all_employees"]);
 Route::prefix('/employee')->group(function (){
     Route::post('/store',[EmployeeController::class,'store']);
+    Route::put('/{id}',[EmployeeController::class,'update']);
+    Route::delete('/{id}',[EmployeeController::class,'destroy']);
 });
 
 Route::get('/departments',[\App\Http\Controllers\DepartmentController::class,'all_departments']);

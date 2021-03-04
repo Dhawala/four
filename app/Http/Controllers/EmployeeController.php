@@ -61,7 +61,10 @@ class EmployeeController extends Controller
         $employee->zip = $request->zip;
         $employee->birthdate = $request->birthdate;
         $employee->date_hired = $request->date_hired;
-        $employee->save();
+        if($employee->save()) {
+            return $employee;
+        }
+        return "Error could not save !";
     }
 
     /**

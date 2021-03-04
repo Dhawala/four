@@ -1,6 +1,6 @@
 <template>
     <div>
-        <form @submit.prevent>
+        <form @submit.prevent="createEmployee">
             <div class="row">
                 <div class="col-6">
                     <div class="form-group">
@@ -43,8 +43,8 @@
                         <label for="zip">Birthday: </label>
                         <datepicker
                             :bootstrap-styling="true"
-                            v-model="employee.birthdate"
-                            :format="customDate"
+                            v-model="birthdate"
+                            :format="'yyyy-MM-dd'"
                         >
                         </datepicker>
                     </div>
@@ -54,8 +54,8 @@
                         <label for="zip">Date Hired: </label>
                         <datepicker
                             :bootstrap-styling="true"
-                            v-model="employee.date_hired"
-                            :format="customDate"
+                            v-model="date_hired"
+                            :format="'yyyy-MM-dd'"
                         >
                         </datepicker>
                     </div>
@@ -159,6 +159,9 @@ export default {
                 date_hired: ''
             },
 
+            birthdate: '',
+            date_hired: '',
+
             selected_department: {},
             departments: [],
 
@@ -217,6 +220,13 @@ export default {
             }).catch(e => {
                 console.log(e)
             })
+        },
+        createEmployee() {
+            axios.post('../api/employee/store', this.employee).then(response => {
+                console.log(response.data);
+            }).catch(e => {
+                console.log(e);
+            });
         }
     },
     computed: {
@@ -226,8 +236,8 @@ export default {
         isCountry() {
             return this.selected_country.id != undefined
         },
-        customDate(date){
-            return  moment(date).format("MM-DD-YYYY");
+        customDate(date) {
+            return moment(date).format("yyyy-mm-dd");
         }
     },
     watch: {
@@ -247,6 +257,17 @@ export default {
                 this.getCities(this.selected_state.value);
             }
         },
+        selected_city(current, previous) {
+            this.employee.city_id = current.value;
+        },
+        birthdate(current, previous) {
+            this.employee.birthdate = moment(current).format('YYYY-MM-DD');
+            console.log(this.employee.birthdate);
+        },
+        date_hired(current, previous) {
+            this.employee.date_hired = moment(current).format('YYYY-MM-DD');
+            console.log(this.employee.date_hired);
+        }
     },
     created() {
         this.getDepartments();
