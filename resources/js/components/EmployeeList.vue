@@ -2,9 +2,6 @@
     <div>
         <div class="row mb-2">
             <div class="col-6">
-                <router-link to="/employee/create" class="btn btn-primary btn-sm" tag="button">
-                    <i class="fa fa-plus"></i> Create New
-                </router-link>
             </div>
         </div>
         <div class="row">
