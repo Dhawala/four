@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\EmployeeController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +16,7 @@ use \App\Http\Controllers\EmployeeController;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
+Route::middleware(['auth:api'])->get('/user', function (Request $request) {
     return $request->user();
 });
 
@@ -24,6 +25,16 @@ Route::prefix('/employee')->group(function (){
     Route::post('/store',[EmployeeController::class,'store']);
     Route::put('/{id}',[EmployeeController::class,'update']);
     Route::delete('/{id}',[EmployeeController::class,'destroy']);
+});
+
+Route::post('/login',function(Request $request){
+    $credentials = $request->only(['email','password']);
+    $token = Auth::attempt($credentials);
+    return $token;
+});
+
+Route::middleware('auth:api')->get('/me',function(){
+    return Auth::user();
 });
 
 Route::get('/departments',[\App\Http\Controllers\DepartmentController::class,'all_departments']);
